@@ -40,7 +40,7 @@ class ViewController: UIViewController {
 
                 self.docs = data
                 DispatchQueue.main.async {
-                 
+                    self.initialize()
                     self.tableView.reloadData()
                 }
 
