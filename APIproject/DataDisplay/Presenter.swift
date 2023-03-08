@@ -20,6 +20,7 @@ class Presenter: ViewOutPutProtocol {
     
     func prepareDataForDisplay() {
         interactor.getDataFromAPI()
+        //interactor.createDoc()
     }
     
 

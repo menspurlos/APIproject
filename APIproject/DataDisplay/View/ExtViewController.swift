@@ -7,51 +7,14 @@
 
 import UIKit
 
-
-extension ViewController {
-    
-    func initialize() {
-        
-        let tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.dataSource = self
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.delegate = self
-        tableView.showsHorizontalScrollIndicator = false
-        return tableView
-            }()
-        
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { make in
-            make.leading.trailing.top.bottom.equalToSuperview()
+extension ViewController: ViewInputProtocol {
+    func reloadView(_ docs: [Documents]) {
+        self.docs = docs
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
 }
-
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return docs.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
-
-        cell.set(object: docs[indexPath.row])
-        
-        //cell.set(object: docs[indexPath.row])
-            return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
-    }
-}
-
  
 extension ViewController {
     

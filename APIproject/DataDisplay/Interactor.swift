@@ -11,6 +11,7 @@ import Foundation
 protocol InteractorInputProtocol {
     init(presenter: InteractorOutputProtocol)
     func getDataFromAPI()
+    func createDoc()
 }
 
 protocol InteractorOutputProtocol: AnyObject {
@@ -19,7 +20,7 @@ protocol InteractorOutputProtocol: AnyObject {
 }
 
 class Interactor: InteractorInputProtocol {
-    
+
     let funcForAPI = FuncForAPI()
 
     unowned let presenter: InteractorOutputProtocol
@@ -31,7 +32,6 @@ class Interactor: InteractorInputProtocol {
     func getDataFromAPI(){
         
         funcForAPI.GetData {dataAPI, error in
-                
                 if let dataAPI = dataAPI {
                     let docs = dataAPI
                     self.presenter.reciveData(data: docs)
@@ -39,12 +39,24 @@ class Interactor: InteractorInputProtocol {
                 if error != nil {
                     print (error as Any)
                     //self.allertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")
-                }
+                    }
         }
-        
-       // let docs = Documents(type: "1", number: "2", date: "3", status: true, delete: true, pred: "4")
-       // presenter.reciveData(data: docs)
     }
+    
+    func createDoc() {
+        funcForAPI.PostData {dataAPI, error in
+            if let dataAPI = dataAPI {
+                print("document was created, number  \(dataAPI.first!.number)")
+                //self.allertShow(text: "document was created, number  \(dataAPI.first!.number)", title: "Create Doc")
+                self.getDataFromAPI()
+            }
+            if error != nil {
+//                self.allertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")
+            }
+        }
+    }
+    
+    
     
     
     

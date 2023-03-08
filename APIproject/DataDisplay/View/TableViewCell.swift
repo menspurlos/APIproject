@@ -8,17 +8,10 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
-   
-//    @IBOutlet weak var typeLabel: UILabel!
-//    @IBOutlet weak var numberLabel: UILabel!
-//    @IBOutlet weak var dateLabel: UILabel!
-//    @IBOutlet weak var statusLabel: UILabel!
-//    @IBOutlet weak var statusImage: UIImageView!
     
     let typeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemCyan
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -63,43 +56,25 @@ class TableViewCell: UITableViewCell {
     
     
     private func setupUI() {
-//        self.contentView.addSubview(statusImage)
-//        self.contentView.addSubview(typeLabel)
-//        self.contentView.addSubview(numberLabel)
-//        self.contentView.addSubview(dateLabel)
-//        self.contentView.addSubview(statusLabel)
-        
-        
+   
         let stackViewY = UIStackView()
         stackViewY.axis = .vertical
         stackViewY.distribution = .equalSpacing
         stackViewY.addArrangedSubview(typeLabel)
         stackViewY.addArrangedSubview(numberLabel)
         stackViewY.addArrangedSubview(dateLabel)
-       
-        
+    
         let stackViewX = UIStackView()
         stackViewX.axis = .horizontal
         stackViewX.addArrangedSubview(statusImage)
         stackViewX.addArrangedSubview(statusLabel)
-        
-        
+      
         stackViewY.addArrangedSubview(stackViewX)
-        
-//        stackViewX.snp.makeConstraints { make in
-//            make.leading.equalToSuperview()
-//        }
-        
-        
+  
         self.contentView.addSubview(stackViewY)
         stackViewY.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview().inset(15)
         }
-        
-        
-//        typeLabel.snp.makeConstraints { make in
-//            make.leading.trailing.top.bottom.equalToSuperview()
-//        }
         
     }
     
