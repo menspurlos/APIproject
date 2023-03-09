@@ -5,7 +5,7 @@
 //  Created by macBook on 08.03.2023.
 //
 
-import Foundation
+import UIKit
 
 struct Documents: Codable {
     let type: String
@@ -18,5 +18,13 @@ struct Documents: Codable {
 
 struct CreateDoc: Codable {
     let number: String
+}
+
+struct DataForDisplay {
+    var type: String
+    var number: String
+    var date: String
+    var status: String
+    var image: UIImage
 }
 

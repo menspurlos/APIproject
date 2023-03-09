@@ -9,18 +9,20 @@ import UIKit
 import SnapKit
 
 protocol ViewInputProtocol: AnyObject {
-    func reloadView(_ docs: [Documents])
+    func reloadView(_ docs: [DataForDisplay])
+    func alertShow(text: String, title: String)
 }
 
 protocol ViewOutPutProtocol {
     init(view: ViewInputProtocol)
     func prepareDataForDisplay()
+    func buttonAddTapAction()
 }
 
 
 class ViewController: UITableViewController {
     
-    var docs: [Documents] = []
+    var docs: [DataForDisplay] = []
     var presenter: ViewOutPutProtocol!
     private let configurator: ConfiguratorInputProtocol = Configurator()
         
@@ -28,37 +30,12 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
-        
-        title = "Cписок документов"
-        navigationController?.navigationBar.backgroundColor = .lightGray
-        
-        
+        navigationControllerConfigure()
+ 
         configurator.configure(with: self)
         presenter.prepareDataForDisplay()
         
-//        let reloadButton = UIButton(type: .system)
-//        reloadButton.addTarget(self, action: #selector(relodButtonTap), for: .touchUpInside)
-        let menuBarButtonReload = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(relodButtonTap))
-        
-//        let addButton = UIButton(type: .system)
-//        addButton.addTarget(self, action: #selector(addButtonTap), for: .touchUpInside)
-//        let menuBarButtonAdd = UIBarButtonItem(customView: addButton)
-        let menuBarButtonAdd = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTap))
-        
-        navigationItem.rightBarButtonItem = menuBarButtonAdd
-        navigationItem.leftBarButtonItem = menuBarButtonReload
-        
-      
     }
-    
-    @objc func relodButtonTap() {
-        presenter.prepareDataForDisplay()
-    }
-    
-    @objc func addButtonTap() {
-        print ("клик2")
-    }
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -78,21 +78,12 @@ class TableViewCell: UITableViewCell {
         
     }
     
-    func set(object: Documents) {
+    func set(object: DataForDisplay) {
         typeLabel.text = object.type
         numberLabel.text = object.number
         dateLabel.text = object.date
-        if object.status == false {
-            statusLabel.text = "Не проведён"
-            statusImage.image = UIImage(named: "noprov")
-        } else {
-            statusLabel.text = "Проведён"
-            statusImage.image = UIImage(named: "prov")
-        }
-        if object.delete == true {
-            statusLabel.text = "Удален"
-            statusImage.image = UIImage(named: "del")
-        }
+        statusLabel.text = object.status
+        statusImage.image = object.image
     }
 
 }

@@ -16,6 +16,7 @@ protocol InteractorInputProtocol {
 
 protocol InteractorOutputProtocol: AnyObject {
     func reciveData(data: [Documents])
+    func documentWasCreated(with number: String)
     
 }
 
@@ -46,9 +47,8 @@ class Interactor: InteractorInputProtocol {
     func createDoc() {
         funcForAPI.PostData {dataAPI, error in
             if let dataAPI = dataAPI {
-                print("document was created, number  \(dataAPI.first!.number)")
-                //self.allertShow(text: "document was created, number  \(dataAPI.first!.number)", title: "Create Doc")
-                self.getDataFromAPI()
+                let numberdoc = dataAPI.first!.number
+                self.presenter.documentWasCreated(with: numberdoc)
             }
             if error != nil {
 //                self.allertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")
