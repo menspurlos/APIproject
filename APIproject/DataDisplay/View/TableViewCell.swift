@@ -71,38 +71,40 @@ class TableViewCell: UITableViewCell {
     }
     
     private func setupUI() {
+        
+        //Первый лэйбл в верхнем левом углу
+        
+        
 
-        // Отображение статуса Горизонтальный стек
-        let stackViewXForStatus = UIStackView()
-        stackViewXForStatus.axis = .horizontal
-        stackViewXForStatus.addArrangedSubview(statusLabel)
-        stackViewXForStatus.addArrangedSubview(statusImage)
-        
-        
-       
-        // Наименовение отображаемых данных Вертикальный стек
-        let stackViewYNameTextLabel = UIStackView()
-        stackViewYNameTextLabel.axis = .vertical
-        stackViewYNameTextLabel.distribution = .equalSpacing
-        stackViewYNameTextLabel.addArrangedSubview(nameTypeLabel)
-        stackViewYNameTextLabel.addArrangedSubview(nameNumberLabel)
-        stackViewYNameTextLabel.addArrangedSubview(nameDateLabel)
-        stackViewYNameTextLabel.addArrangedSubview(nameStatusLabel)
-        
-        // отображение данных Вертикальный стек
-        let stackViewYTextLabel = UIStackView()
-        stackViewYTextLabel.axis = .vertical
-        stackViewYTextLabel.distribution = .equalSpacing
-        stackViewYTextLabel.addArrangedSubview(typeLabel)
-        stackViewYTextLabel.addArrangedSubview(numberLabel)
-        stackViewYTextLabel.addArrangedSubview(dateLabel)
-        stackViewYTextLabel.addArrangedSubview(stackViewXForStatus)
-
-        //отображение общего стека
-        let generalStackView = UIStackView()
-        generalStackView.axis = .horizontal
-        generalStackView.addArrangedSubview(stackViewYNameTextLabel)
-        generalStackView.addArrangedSubview(stackViewYTextLabel)
+//        // Отображение статуса Горизонтальный стек
+//        let stackViewXForStatus = UIStackView()
+//        stackViewXForStatus.axis = .horizontal
+//        stackViewXForStatus.addArrangedSubview(statusLabel)
+//        stackViewXForStatus.addArrangedSubview(statusImage)
+//
+//        // Наименовение отображаемых данных Вертикальный стек
+//        let stackViewYNameTextLabel = UIStackView()
+//        stackViewYNameTextLabel.axis = .vertical
+//        stackViewYNameTextLabel.distribution = .equalSpacing
+//        stackViewYNameTextLabel.addArrangedSubview(nameTypeLabel)
+//        stackViewYNameTextLabel.addArrangedSubview(nameNumberLabel)
+//        stackViewYNameTextLabel.addArrangedSubview(nameDateLabel)
+//        stackViewYNameTextLabel.addArrangedSubview(nameStatusLabel)
+//
+//        // отображение данных Вертикальный стек
+//        let stackViewYTextLabel = UIStackView()
+//        stackViewYTextLabel.axis = .vertical
+//        stackViewYTextLabel.distribution = .equalSpacing
+//        stackViewYTextLabel.addArrangedSubview(typeLabel)
+//        stackViewYTextLabel.addArrangedSubview(numberLabel)
+//        stackViewYTextLabel.addArrangedSubview(dateLabel)
+//        stackViewYTextLabel.addArrangedSubview(stackViewXForStatus)
+//
+//        //отображение общего стека
+//        let generalStackView = UIStackView()
+//        generalStackView.axis = .horizontal
+//        generalStackView.addArrangedSubview(stackViewYNameTextLabel)
+//        generalStackView.addArrangedSubview(stackViewYTextLabel)
   
         self.contentView.addSubview(generalStackView)
         generalStackView.snp.makeConstraints { make in
