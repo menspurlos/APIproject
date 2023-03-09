@@ -26,21 +26,11 @@ extension ViewController: ViewInputProtocol {
             self.tableView.reloadData()
         }
     }
+    
+    
 }
  
 extension ViewController {
-    
-//    func allertShow(text: String, title: String) {
-//
-//        let alertController = UIAlertController(title: title,
-//                                                message: text,
-//                                                preferredStyle: .alert)
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-//
-//        alertController.addAction(cancelAction)
-//        present(alertController, animated: true)
-//    }
-    
     func navigationControllerConfigure(){
         
         title = "Cписок документов"

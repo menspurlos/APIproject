@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 protocol InteractorInputProtocol {
@@ -17,6 +18,7 @@ protocol InteractorInputProtocol {
 protocol InteractorOutputProtocol: AnyObject {
     func reciveData(data: [Documents])
     func documentWasCreated(with number: String)
+    func reportABug(error: AFError)
     
 }
 
@@ -32,26 +34,27 @@ class Interactor: InteractorInputProtocol {
    
     func getDataFromAPI(){
         
-        funcForAPI.GetData {dataAPI, error in
+        funcForAPI.GetData {[weak self] dataAPI, error in
+                guard let self = self else { return }
                 if let dataAPI = dataAPI {
                     let docs = dataAPI
                     self.presenter.reciveData(data: docs)
                 }
                 if error != nil {
-                    print (error as Any)
-                    //self.allertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")
+                    self.presenter.reportABug(error: error!)
                     }
         }
     }
     
     func createDoc() {
-        funcForAPI.PostData {dataAPI, error in
+        funcForAPI.PostData {[weak self] dataAPI, error in
+            guard let self = self else { return }
             if let dataAPI = dataAPI {
                 let numberdoc = dataAPI.first!.number
                 self.presenter.documentWasCreated(with: numberdoc)
             }
             if error != nil {
-//                self.allertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")
+                self.presenter.reportABug(error: error!)
             }
         }
     }

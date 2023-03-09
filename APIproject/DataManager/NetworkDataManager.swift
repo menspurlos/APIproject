@@ -14,9 +14,6 @@ protocol APIHttpProtocol {
 
 class APIhttp: APIHttpProtocol {
     
-    
-    //static let sharedAPI = APIhttp()
-    
     let url = "http://5.130.157.177/CBBudzhet/hs/http"
     
     func APICall<T: Decodable>(method: HTTPMethod, compliteHandler: @escaping (_ dataAPI:[T]?, _ error: AFError?) -> Void) {
