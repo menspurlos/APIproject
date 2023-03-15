@@ -19,8 +19,4 @@ class Configurator: ConfiguratorInputProtocol {
         view.presenter = presenter
         presenter.interactor = interactor
     }
-    
-    
-    
-    
 }

@@ -15,53 +15,42 @@ protocol InteractorInputProtocol {
     func createDoc()
 }
 
-protocol InteractorOutputProtocol: AnyObject {
-    func reciveData(data: [Documents])
-    func documentWasCreated(with number: String)
-    func reportABug(error: AFError)
-    
-}
+class Interactor {
 
-class Interactor: InteractorInputProtocol {
+    private let funcForAPI = FuncForAPI()
 
-    let funcForAPI = FuncForAPI()
-
-    unowned let presenter: InteractorOutputProtocol
+    weak var presenter: InteractorOutputProtocol?
     
     required init(presenter: InteractorOutputProtocol) {
         self.presenter = presenter
     }
-   
+}
+
+extension Interactor: InteractorInputProtocol {
     func getDataFromAPI(){
         
-        funcForAPI.GetData {[weak self] dataAPI, error in
+        funcForAPI.getData {[weak self] dataAPI, error in
                 guard let self = self else { return }
                 if let dataAPI = dataAPI {
                     let docs = dataAPI
-                    self.presenter.reciveData(data: docs)
+                    self.presenter?.reciveData(data: docs)
                 }
                 if error != nil {
-                    self.presenter.reportABug(error: error!)
+                    self.presenter?.reportABug(error: error!)
                     }
         }
     }
     
     func createDoc() {
-        funcForAPI.PostData {[weak self] dataAPI, error in
+        funcForAPI.postData {[weak self] dataAPI, error in
             guard let self = self else { return }
             if let dataAPI = dataAPI {
                 let numberdoc = dataAPI.first!.number
-                self.presenter.documentWasCreated(with: numberdoc)
+                self.presenter?.documentWasCreated(with: numberdoc)
             }
             if error != nil {
-                self.presenter.reportABug(error: error!)
+                self.presenter?.reportABug(error: error!)
             }
         }
     }
-    
-    
-    
-    
-    
-    
 }

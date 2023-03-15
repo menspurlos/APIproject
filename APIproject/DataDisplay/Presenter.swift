@@ -8,14 +8,28 @@
 import UIKit
 import Alamofire
 
-class Presenter: ViewOutPutProtocol {
+protocol ViewOutPutProtocol {
+    func prepareDataForDisplay()
+    func buttonAddTapAction()
+}
+
+protocol InteractorOutputProtocol: AnyObject {
+    func reciveData(data: [Documents])
+    func documentWasCreated(with number: String)
+    func reportABug(error: AFError)
+}
+
+class Presenter {
    
-    unowned let view: ViewInputProtocol
+    weak var view: ViewInputProtocol?
     var interactor: InteractorInputProtocol!
     
     required init(view: ViewInputProtocol) {
         self.view = view
     }
+}
+
+extension Presenter: ViewOutPutProtocol {
     
     func prepareDataForDisplay() {
         interactor.getDataFromAPI()
@@ -29,20 +43,21 @@ class Presenter: ViewOutPutProtocol {
 extension Presenter: InteractorOutputProtocol {
     func reportABug(error: Alamofire.AFError) {
         //тут можно разобрать error, но сообщаем просто, что есть ошибка
-        self.view.alertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")  
+        view?.alertShow(text: "Отсутствует подключение к серверу или на сервере неккоректные данные", title: "Error")
     }
     
     func documentWasCreated(with number: String) {
-        view.alertShow(text: "document was created, number \(number)", title: "Create Doc")  //сообщить, что был создан документ
+        view?.alertShow(text: "document was created, number \(number)", title: "Create Doc")  //сообщить, что был создан документ
         interactor.getDataFromAPI()                                                         //получить данные с сервера и показать
     }
     
     func reciveData(data: [Documents]) {
         let dataForDisplay = prepareDataFromAPI(data: data)  //подготовить полученные данные
-        view.reloadView(dataForDisplay)                     //передать на view
+        view?.reloadView(dataForDisplay)                     //передать на view
     }
-    
-    
+}
+
+private extension Presenter {
     //преобразование полученных данных по API для отображения
     func prepareDataFromAPI(data: [Documents]) -> [DataForDisplay] {
         var dataForDisplay: [DataForDisplay] = []

@@ -14,7 +14,7 @@ protocol APIHttpProtocol {
 
 class APIhttp: APIHttpProtocol {
     
-    let url = "http://5.130.157.177/CBBudzhet/hs/http"
+    private let url = "http://5.130.157.177/CBBudzhet/hs/http"
     
     func APICall<T: Decodable>(method: HTTPMethod, compliteHandler: @escaping (_ dataAPI:[T]?, _ error: AFError?) -> Void) {
         AF.request(url,
@@ -39,5 +39,4 @@ class APIhttp: APIHttpProtocol {
             }
         }
     }
-    
 }

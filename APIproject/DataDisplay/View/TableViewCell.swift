@@ -8,41 +8,71 @@
 import UIKit
 
 class TableViewCell: UITableViewCell {
+
+    private let typeLabel = UILabel()
+    private let numberLabel = UILabel()
+    private let dateLabel = UILabel()
+    private let statusLabel = UILabel()
     
-    
-    
-    let typeLabel = UILabel()
-    let numberLabel = UILabel()
-    let dateLabel = UILabel()
-    let statusLabel = UILabel()
-    
-    let nameTypeLabel: UILabel = {
+    private let nameTypeLabel: UILabel = {
         let label = UILabel()
         label.text = "Вид документа"
         return label
     }()
-    let nameNumberLabel: UILabel = {
+    
+    private let nameNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "Номер"
         return label
     }()
-    let nameDateLabel: UILabel = {
+    
+    private let nameDateLabel: UILabel = {
         let label = UILabel()
         label.text = "Дата"
         return label
     }()
-    let nameStatusLabel: UILabel = {
+    
+    private let nameStatusLabel: UILabel = {
         let label = UILabel()
         label.text = "Статус документа"
         return label
     }()
     
-    let statusImage: UIImageView = {
+    private let statusImage: UIImageView = {
         let iv = UIImageView()
         iv.contentMode = .scaleAspectFit
         return iv
     }()
     
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupTextLabel(label: [typeLabel, numberLabel, dateLabel, statusLabel])
+        setupImmutableLabel(label: [nameTypeLabel, nameNumberLabel, nameDateLabel, nameStatusLabel])
+        setupUI()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+                typeLabel.text = ""
+                numberLabel.text = ""
+                dateLabel.text = ""
+                statusLabel.text = ""
+                statusImage.image = nil
+        }
+    
+    func set(object: DataForDisplay) {
+        typeLabel.text = object.type
+        numberLabel.text = object.number
+        dateLabel.text = object.date
+        statusLabel.text = object.status
+        statusImage.image = object.image
+    }
+}
+
+private extension TableViewCell {
     func setupTextLabel(label: [UILabel]) {
         label.forEach { label in
             label.textColor = .systemCyan
@@ -57,28 +87,13 @@ class TableViewCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupTextLabel(label: [typeLabel, numberLabel, dateLabel, statusLabel])
-        setupImmutableLabel(label: [nameTypeLabel, nameNumberLabel, nameDateLabel, nameStatusLabel])
-        setupUI()
-        
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupUI() {
+    func setupUI() {
 
         // Отображение статуса Горизонтальный стек
         let stackViewXForStatus = UIStackView()
         stackViewXForStatus.axis = .horizontal
         stackViewXForStatus.addArrangedSubview(statusLabel)
         stackViewXForStatus.addArrangedSubview(statusImage)
-        
-        
        
         // Наименовение отображаемых данных Вертикальный стек
         let stackViewYNameTextLabel = UIStackView()
@@ -108,15 +123,5 @@ class TableViewCell: UITableViewCell {
         generalStackView.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview().inset(15)
         }
-        
     }
-    
-    func set(object: DataForDisplay) {
-        typeLabel.text = object.type
-        numberLabel.text = object.number
-        dateLabel.text = object.date
-        statusLabel.text = object.status
-        statusImage.image = object.image
-    }
-
 }

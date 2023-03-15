@@ -12,7 +12,6 @@
 		FA36C5B529B88BB500064503 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5B429B88BB500064503 /* Presenter.swift */; };
 		FA36C5B829B88E2C00064503 /* NetworkDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5B729B88E2C00064503 /* NetworkDataManager.swift */; };
 		FA36C5BB29B88E8200064503 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FA36C5BA29B88E8200064503 /* Alamofire */; };
-		FA36C5BF29B890DD00064503 /* ExtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5BE29B890DD00064503 /* ExtViewController.swift */; };
 		FA36C5C129B8958200064503 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5C029B8958200064503 /* Interactor.swift */; };
 		FA36C5C329B8981000064503 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5C229B8981000064503 /* Configurator.swift */; };
 		FA36C5C529B8A06300064503 /* FuncForAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5C429B8A06300064503 /* FuncForAPI.swift */; };
@@ -30,7 +29,6 @@
 		FA36C5B229B887E600064503 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		FA36C5B429B88BB500064503 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		FA36C5B729B88E2C00064503 /* NetworkDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataManager.swift; sourceTree = "<group>"; };
-		FA36C5BE29B890DD00064503 /* ExtViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtViewController.swift; sourceTree = "<group>"; };
 		FA36C5C029B8958200064503 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
 		FA36C5C229B8981000064503 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		FA36C5C429B8A06300064503 /* FuncForAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncForAPI.swift; sourceTree = "<group>"; };
@@ -66,16 +64,14 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
-		FA36C5BC29B88EA500064503 /* Services */ = {
+		FA36C5BC29B88EA500064503 /* Support */ = {
 			isa = PBXGroup;
 			children = (
 				FA7F015529B84BD500014292 /* Assets.xcassets */,
-				FA7F015729B84BD500014292 /* LaunchScreen.storyboard */,
-				FA7F014929B84BD400014292 /* AppDelegate.swift */,
-				FA7F014B29B84BD400014292 /* SceneDelegate.swift */,
 				FA7F015229B84BD400014292 /* APIproject.xcdatamodeld */,
+				FA7F015A29B84BD500014292 /* Info.plist */,
 			);
-			path = Services;
+			path = Support;
 			sourceTree = "<group>";
 		};
 		FA36C5BD29B8904A00064503 /* View */ = {
@@ -83,9 +79,18 @@
 			children = (
 				FA36C5B029B8518000064503 /* TableViewCell.swift */,
 				FA7F014D29B84BD400014292 /* ViewController.swift */,
-				FA36C5BE29B890DD00064503 /* ExtViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		FA36C62529C1E74000064503 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FA7F014929B84BD400014292 /* AppDelegate.swift */,
+				FA7F014B29B84BD400014292 /* SceneDelegate.swift */,
+				FA7F015729B84BD500014292 /* LaunchScreen.storyboard */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		FA7F013D29B84BD400014292 = {
@@ -107,10 +112,10 @@
 		FA7F014829B84BD400014292 /* APIproject */ = {
 			isa = PBXGroup;
 			children = (
-				FA36C5BC29B88EA500064503 /* Services */,
+				FA36C62529C1E74000064503 /* Application */,
+				FA36C5BC29B88EA500064503 /* Support */,
 				FA36C5B629B88E0F00064503 /* DataManager */,
 				FA7F016329B84E3600014292 /* DataDisplay */,
-				FA7F015A29B84BD500014292 /* Info.plist */,
 			);
 			path = APIproject;
 			sourceTree = "<group>";
@@ -214,7 +219,6 @@
 				FA7F015429B84BD400014292 /* APIproject.xcdatamodeld in Sources */,
 				FA36C5B329B887E600064503 /* Entity.swift in Sources */,
 				FA7F014E29B84BD400014292 /* ViewController.swift in Sources */,
-				FA36C5BF29B890DD00064503 /* ExtViewController.swift in Sources */,
 				FA7F014A29B84BD400014292 /* AppDelegate.swift in Sources */,
 				FA7F014C29B84BD400014292 /* SceneDelegate.swift in Sources */,
 			);
@@ -357,7 +361,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P6L838D4AA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = APIproject/Info.plist;
+				INFOPLIST_FILE = APIproject/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -384,7 +388,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = P6L838D4AA;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = APIproject/Info.plist;
+				INFOPLIST_FILE = APIproject/Support/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
