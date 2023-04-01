@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct Documents: Codable {
+struct Documents: Codable, Hashable {
     let type: String
     let number: String
     let date: String

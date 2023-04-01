@@ -20,6 +20,7 @@ class ViewController: UIViewController {
     var docs: [DataForDisplay] = []
     var presenter: ViewOutPutProtocol!
     private let configurator: ConfiguratorInputProtocol = Configurator()
+    var dataSource: UICollectionViewDiffableDataSource<TableViewCell,Documents>?
 
     let tableView: UITableView = {
         let tableView = UITableView()
@@ -30,8 +31,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.delegate = self
-        tableView.dataSource = self
+//        tableView.delegate = self
+//        tableView.dataSource = self
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
@@ -45,25 +46,29 @@ class ViewController: UIViewController {
         presenter.prepareDataForDisplay()
         
     }
+    
+    func createDataSource() {
+        
+    }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return docs.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-        
-        cell.set(object: docs[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 140
-    }
-}
+//extension ViewController: UITableViewDelegate, UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return docs.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+//
+//        cell.set(object: docs[indexPath.row])
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 140
+//    }
+//}
 
 
 extension ViewController: ViewInputProtocol {
