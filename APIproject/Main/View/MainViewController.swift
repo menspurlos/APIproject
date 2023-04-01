@@ -25,7 +25,6 @@ class MainViewController: UIViewController {
     
     // MARK: - Property
     var presenter: MainViewToPresenterProtocol!
-    
     var docs: [DataForDisplay] = []
     
     private let tableView: UITableView = {
@@ -40,7 +39,6 @@ class MainViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
         commonInit()
     }
     
