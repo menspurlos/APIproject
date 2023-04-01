@@ -20,19 +20,23 @@ class ViewController: UIViewController {
     var docs: [DataForDisplay] = []
     var presenter: ViewOutPutProtocol!
     private let configurator: ConfiguratorInputProtocol = Configurator()
-    
-//    private lazy var tableView: UITableView = {
-//        let table = UITableView(frame: .zero)
-//        return table
-//    }()
-    var tableView: UITableView
-    
-    
+
+    let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.showsHorizontalScrollIndicator = false
+        return tableView
+        }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { make in
+            make.leading.trailing.top.bottom.equalToSuperview()
+        }
         
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
         navigationControllerConfigure()
@@ -59,7 +63,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }
-    
 }
 
 
