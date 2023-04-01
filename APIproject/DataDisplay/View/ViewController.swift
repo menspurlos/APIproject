@@ -13,63 +13,39 @@ protocol ViewInputProtocol: AnyObject {
     func alertShow(text: String, title: String)
 }
 
-    //тут ветка без тэйбла
-
 class ViewController: UIViewController {
     
     var docs: [DataForDisplay] = []
     var presenter: ViewOutPutProtocol!
     private let configurator: ConfiguratorInputProtocol = Configurator()
-    var dataSource: UICollectionViewDiffableDataSource<TableViewCell,Documents>?
-
-    let tableView: UITableView = {
+    
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.showsHorizontalScrollIndicator = false
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
         return tableView
         }()
+    
+    private var dataSource: UITableViewDiffableDataSource<Section,DataForDisplay>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        createDataSource()
+        tableView.dataSource = dataSource
         
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.leading.trailing.top.bottom.equalToSuperview()
         }
         
-        tableView.register(TableViewCell.self, forCellReuseIdentifier: "Cell")
         navigationControllerConfigure()
         
         configurator.configure(with: self)
         presenter.prepareDataForDisplay()
         
     }
-    
-    func createDataSource() {
-        
-    }
 }
-
-//extension ViewController: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return docs.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
-//
-//        cell.set(object: docs[indexPath.row])
-//        return cell
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 140
-//    }
-//}
-
 
 extension ViewController: ViewInputProtocol {
     
@@ -86,7 +62,7 @@ extension ViewController: ViewInputProtocol {
     func reloadView(_ docs: [DataForDisplay]) {
         self.docs = docs
         DispatchQueue.main.async {
-            self.tableView.reloadData()
+            self.relData()
         }
     }
 }
@@ -110,6 +86,21 @@ private extension ViewController {
     
     @objc func addButtonTap() {
         presenter.buttonAddTapAction()
+    }
+    
+    func relData() {
+        var snapshot = NSDiffableDataSourceSnapshot<Section,DataForDisplay>()
+        snapshot.appendSections([.first])
+        snapshot.appendItems(docs)
+        dataSource?.apply(snapshot, animatingDifferences: true, completion: nil)
+    }
+    
+    func createDataSource() {
+        dataSource = UITableViewDiffableDataSource<Section,DataForDisplay>(tableView: tableView) { tableView, indexPath, row in
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+            cell.set(object: self.docs[indexPath.row])
+            return cell
+            }
     }
 }
 

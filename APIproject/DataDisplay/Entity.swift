@@ -20,7 +20,7 @@ struct CreateDoc: Codable {
     let number: String
 }
 
-struct DataForDisplay {
+struct DataForDisplay: Hashable {
     var type: String
     var number: String
     var date: String
@@ -28,3 +28,6 @@ struct DataForDisplay {
     var image: UIImage
 }
 
+enum Section {
+    case first
+}
