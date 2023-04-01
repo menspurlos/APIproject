@@ -7,39 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA36C5B129B8518000064503 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5B029B8518000064503 /* TableViewCell.swift */; };
 		FA36C5B329B887E600064503 /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5B229B887E600064503 /* Entity.swift */; };
-		FA36C5B529B88BB500064503 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5B429B88BB500064503 /* Presenter.swift */; };
 		FA36C5B829B88E2C00064503 /* NetworkDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5B729B88E2C00064503 /* NetworkDataManager.swift */; };
 		FA36C5BB29B88E8200064503 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FA36C5BA29B88E8200064503 /* Alamofire */; };
-		FA36C5C129B8958200064503 /* Interactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5C029B8958200064503 /* Interactor.swift */; };
-		FA36C5C329B8981000064503 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5C229B8981000064503 /* Configurator.swift */; };
 		FA36C5C529B8A06300064503 /* FuncForAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA36C5C429B8A06300064503 /* FuncForAPI.swift */; };
 		FA7F014A29B84BD400014292 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F014929B84BD400014292 /* AppDelegate.swift */; };
 		FA7F014C29B84BD400014292 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F014B29B84BD400014292 /* SceneDelegate.swift */; };
-		FA7F014E29B84BD400014292 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7F014D29B84BD400014292 /* ViewController.swift */; };
 		FA7F015429B84BD400014292 /* APIproject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7F015229B84BD400014292 /* APIproject.xcdatamodeld */; };
 		FA7F015629B84BD500014292 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA7F015529B84BD500014292 /* Assets.xcassets */; };
 		FA7F015929B84BD500014292 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7F015729B84BD500014292 /* LaunchScreen.storyboard */; };
 		FA7F016229B84C1800014292 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FA7F016129B84C1800014292 /* SnapKit */; };
+		FAC7564B29D815CA00FE57F9 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7564629D815CA00FE57F9 /* MainPresenter.swift */; };
+		FAC7564C29D815CA00FE57F9 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7564729D815CA00FE57F9 /* MainRouter.swift */; };
+		FAC7564D29D815CA00FE57F9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7564829D815CA00FE57F9 /* MainViewController.swift */; };
+		FAC7564E29D815CA00FE57F9 /* MainInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7564929D815CA00FE57F9 /* MainInteractor.swift */; };
+		FAC7564F29D815CA00FE57F9 /* MainConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7564A29D815CA00FE57F9 /* MainConfigurator.swift */; };
+		FAC7565229D81D8400FE57F9 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7565129D81D8400FE57F9 /* TableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA36C5B029B8518000064503 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		FA36C5B229B887E600064503 /* Entity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
-		FA36C5B429B88BB500064503 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		FA36C5B729B88E2C00064503 /* NetworkDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataManager.swift; sourceTree = "<group>"; };
-		FA36C5C029B8958200064503 /* Interactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interactor.swift; sourceTree = "<group>"; };
-		FA36C5C229B8981000064503 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		FA36C5C429B8A06300064503 /* FuncForAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuncForAPI.swift; sourceTree = "<group>"; };
 		FA7F014629B84BD400014292 /* APIproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APIproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA7F014929B84BD400014292 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA7F014B29B84BD400014292 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FA7F014D29B84BD400014292 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FA7F015329B84BD400014292 /* APIproject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = APIproject.xcdatamodel; sourceTree = "<group>"; };
 		FA7F015529B84BD500014292 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA7F015829B84BD500014292 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA7F015A29B84BD500014292 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAC7564629D815CA00FE57F9 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		FAC7564729D815CA00FE57F9 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		FAC7564829D815CA00FE57F9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FAC7564929D815CA00FE57F9 /* MainInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractor.swift; sourceTree = "<group>"; };
+		FAC7564A29D815CA00FE57F9 /* MainConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConfigurator.swift; sourceTree = "<group>"; };
+		FAC7565129D81D8400FE57F9 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,15 +76,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		FA36C5BD29B8904A00064503 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FA36C5B029B8518000064503 /* TableViewCell.swift */,
-				FA7F014D29B84BD400014292 /* ViewController.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		FA36C62529C1E74000064503 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -112,24 +105,42 @@
 		FA7F014829B84BD400014292 /* APIproject */ = {
 			isa = PBXGroup;
 			children = (
+				FA7F016329B84E3600014292 /* Model */,
+				FAC7564529D8120800FE57F9 /* VIPERasDNS */,
 				FA36C62529C1E74000064503 /* Application */,
 				FA36C5BC29B88EA500064503 /* Support */,
 				FA36C5B629B88E0F00064503 /* DataManager */,
-				FA7F016329B84E3600014292 /* DataDisplay */,
 			);
 			path = APIproject;
 			sourceTree = "<group>";
 		};
-		FA7F016329B84E3600014292 /* DataDisplay */ = {
+		FA7F016329B84E3600014292 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA36C5BD29B8904A00064503 /* View */,
-				FA36C5B429B88BB500064503 /* Presenter.swift */,
-				FA36C5C029B8958200064503 /* Interactor.swift */,
 				FA36C5B229B887E600064503 /* Entity.swift */,
-				FA36C5C229B8981000064503 /* Configurator.swift */,
 			);
-			path = DataDisplay;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FAC7564529D8120800FE57F9 /* VIPERasDNS */ = {
+			isa = PBXGroup;
+			children = (
+				FAC7565029D81D6200FE57F9 /* View */,
+				FAC7564629D815CA00FE57F9 /* MainPresenter.swift */,
+				FAC7564929D815CA00FE57F9 /* MainInteractor.swift */,
+				FAC7564729D815CA00FE57F9 /* MainRouter.swift */,
+				FAC7564A29D815CA00FE57F9 /* MainConfigurator.swift */,
+			);
+			path = VIPERasDNS;
+			sourceTree = "<group>";
+		};
+		FAC7565029D81D6200FE57F9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAC7564829D815CA00FE57F9 /* MainViewController.swift */,
+				FAC7565129D81D8400FE57F9 /* TableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,14 +222,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA36C5C529B8A06300064503 /* FuncForAPI.swift in Sources */,
-				FA36C5B129B8518000064503 /* TableViewCell.swift in Sources */,
-				FA36C5B529B88BB500064503 /* Presenter.swift in Sources */,
-				FA36C5C329B8981000064503 /* Configurator.swift in Sources */,
-				FA36C5C129B8958200064503 /* Interactor.swift in Sources */,
+				FAC7564C29D815CA00FE57F9 /* MainRouter.swift in Sources */,
 				FA36C5B829B88E2C00064503 /* NetworkDataManager.swift in Sources */,
+				FAC7564D29D815CA00FE57F9 /* MainViewController.swift in Sources */,
+				FAC7564E29D815CA00FE57F9 /* MainInteractor.swift in Sources */,
+				FAC7564F29D815CA00FE57F9 /* MainConfigurator.swift in Sources */,
 				FA7F015429B84BD400014292 /* APIproject.xcdatamodeld in Sources */,
+				FAC7564B29D815CA00FE57F9 /* MainPresenter.swift in Sources */,
 				FA36C5B329B887E600064503 /* Entity.swift in Sources */,
-				FA7F014E29B84BD400014292 /* ViewController.swift in Sources */,
+				FAC7565229D81D8400FE57F9 /* TableViewCell.swift in Sources */,
 				FA7F014A29B84BD400014292 /* AppDelegate.swift in Sources */,
 				FA7F014C29B84BD400014292 /* SceneDelegate.swift in Sources */,
 			);

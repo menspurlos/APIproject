@@ -1,32 +1,28 @@
 //
-//  Interactor.swift
+//  MainInteractor.swift
 //  APIproject
 //
-//  Created by macBook on 08.03.2023.
+//  Created by macBook on 01.04.2023.
+//  
 //
 
 import Foundation
-import Alamofire
 
-
-protocol InteractorInputProtocol {
-    init(presenter: InteractorOutputProtocol)
+// MARK: Protocol - MainPresenterToInteractorProtocol (Presenter -> Interactor)
+protocol MainPresenterToInteractorProtocol: AnyObject {
     func getDataFromAPI()
     func createDoc()
 }
 
-class Interactor {
+class MainInteractor {
 
+    // MARK: Properties
+    weak var presenter: MainInteractorToPresenterProtocol!
     private let funcForAPI = FuncForAPI()
-
-    weak var presenter: InteractorOutputProtocol?
-    
-    required init(presenter: InteractorOutputProtocol) {
-        self.presenter = presenter
-    }
 }
 
-extension Interactor: InteractorInputProtocol {
+// MARK: Extension - MainPresenterToInteractorProtocol
+extension MainInteractor: MainPresenterToInteractorProtocol {
     func getDataFromAPI(){
         
         funcForAPI.getData {[weak self] dataAPI, error in

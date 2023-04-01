@@ -1,23 +1,32 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  APIproject
 //
-//  Created by macBook on 08.03.2023.
+//  Created by macBook on 01.04.2023.
+//  
 //
 
 import UIKit
 import SnapKit
 
-protocol ViewInputProtocol: AnyObject {
+// MARK: Protocol - MainPresenterToViewProtocol (Presenter -> View)
+protocol MainPresenterToViewProtocol: AnyObject {
     func reloadView(_ docs: [DataForDisplay])
     func alertShow(text: String, title: String)
 }
 
-class ViewController: UIViewController {
+// MARK: Protocol - MainRouterToViewProtocol (Router -> View)
+protocol MainRouterToViewProtocol: AnyObject {
+    func presentView(view: UIViewController)
+    func pushView(view: UIViewController)
+}
+
+class MainViewController: UIViewController {
+    
+    // MARK: - Property
+    var presenter: MainViewToPresenterProtocol!
     
     var docs: [DataForDisplay] = []
-    var presenter: ViewOutPutProtocol!
-    private let configurator: ConfiguratorInputProtocol = Configurator()
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -28,9 +37,32 @@ class ViewController: UIViewController {
     
     private var dataSource: UITableViewDiffableDataSource<Section,DataForDisplay>?
 
+    // MARK: - init
+    init() {
+        super.init(nibName: nil, bundle: nil)
+
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
+        commonInit()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configureUI()
+        presenter.viewDidLoad()
+    }
+    
+    // MARK: - private func
+    private func commonInit() {
         
+    }
+
+    private func configureUI() {
         createDataSource()
         tableView.dataSource = dataSource
         
@@ -40,15 +72,12 @@ class ViewController: UIViewController {
         }
         
         navigationControllerConfigure()
-        
-        configurator.configure(with: self)
         presenter.prepareDataForDisplay()
-        
     }
 }
 
-extension ViewController: ViewInputProtocol {
-    
+// MARK: Extension - MainPresenterToViewProtocol 
+extension MainViewController: MainPresenterToViewProtocol{
     func alertShow(text: String, title: String) {
         let alertController = UIAlertController(title: title,
                                                 message: text,
@@ -67,7 +96,19 @@ extension ViewController: ViewInputProtocol {
     }
 }
 
-private extension ViewController {
+// MARK: Extension - MainRouterToViewProtocol
+extension MainViewController: MainRouterToViewProtocol{
+    func presentView(view: UIViewController) {
+        present(view, animated: true, completion: nil)
+    }
+
+    func pushView(view: UIViewController) {
+        navigationController?.pushViewController(view, animated: true)
+    }
+}
+
+// MARK: Etension - different funcution
+private extension MainViewController {
     func navigationControllerConfigure(){
         
         title = "Cписок документов"
@@ -85,7 +126,7 @@ private extension ViewController {
     }
     
     @objc func addButtonTap() {
-        presenter.buttonAddTapAction()
+       presenter.buttonAddTapAction()
     }
     
     func relData() {
@@ -103,12 +144,3 @@ private extension ViewController {
             }
     }
 }
-
-
-
-
-
-
-
-
-
