@@ -105,11 +105,11 @@
 		FA7F014829B84BD400014292 /* APIproject */ = {
 			isa = PBXGroup;
 			children = (
+				FAC7564529D8120800FE57F9 /* Main */,
+				FA36C5B629B88E0F00064503 /* DataManager */,
 				FA7F016329B84E3600014292 /* Model */,
-				FAC7564529D8120800FE57F9 /* VIPERasDNS */,
 				FA36C62529C1E74000064503 /* Application */,
 				FA36C5BC29B88EA500064503 /* Support */,
-				FA36C5B629B88E0F00064503 /* DataManager */,
 			);
 			path = APIproject;
 			sourceTree = "<group>";
@@ -122,7 +122,7 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		FAC7564529D8120800FE57F9 /* VIPERasDNS */ = {
+		FAC7564529D8120800FE57F9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				FAC7565029D81D6200FE57F9 /* View */,
@@ -131,7 +131,7 @@
 				FAC7564729D815CA00FE57F9 /* MainRouter.swift */,
 				FAC7564A29D815CA00FE57F9 /* MainConfigurator.swift */,
 			);
-			path = VIPERasDNS;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		FAC7565029D81D6200FE57F9 /* View */ = {
