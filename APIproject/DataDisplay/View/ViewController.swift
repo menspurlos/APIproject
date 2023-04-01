@@ -13,6 +13,8 @@ protocol ViewInputProtocol: AnyObject {
     func alertShow(text: String, title: String)
 }
 
+    //тут ветка без тэйбла
+
 class ViewController: UITableViewController {
     
     var docs: [DataForDisplay] = []
